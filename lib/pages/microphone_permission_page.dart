@@ -1,3 +1,4 @@
+// 
 import 'package:flutter/material.dart';
 import '../../widgets/shared_widgets.dart';
 import 'landing_page.dart'; // ✅ Import LandingPage
@@ -7,6 +8,9 @@ class MicrophonePermissionScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // You can customize this depending on current app theme
+    ThemeMode themeMode = ThemeMode.light;
+
     return Scaffold(
       body: Stack(
         fit: StackFit.expand,
@@ -25,19 +29,41 @@ class MicrophonePermissionScreen extends StatelessWidget {
                     permissionButton(context, 'Allow Always', () {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (_) => const LandingPage()),
+                        MaterialPageRoute(
+                          builder: (_) => LandingPage(
+                            onToggleTheme: () {
+                              // You can replace this with real logic
+                              print("Theme toggled from Mic screen");
+                            },
+                            themeMode: themeMode,
+                          ),
+                        ),
                       );
                     }),
                     permissionButton(context, 'Only While Using the App', () {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (_) => const LandingPage()),
+                        MaterialPageRoute(
+                          builder: (_) => LandingPage(
+                            onToggleTheme: () {
+                              print("Theme toggled from Mic screen");
+                            },
+                            themeMode: themeMode,
+                          ),
+                        ),
                       );
                     }),
                     permissionButton(context, "Don't Allow", () {
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (_) => const LandingPage()),
+                        MaterialPageRoute(
+                          builder: (_) => LandingPage(
+                            onToggleTheme: () {
+                              print("Theme toggled from Mic screen");
+                            },
+                            themeMode: themeMode,
+                          ),
+                        ),
                       );
                     }),
                   ],

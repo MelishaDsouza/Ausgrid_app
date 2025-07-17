@@ -9,6 +9,7 @@
       "dependencies": [
         "cupertino_icons",
         "flutter",
+        "flutter_tts",
         "geolocator",
         "http",
         "shared_preferences",
@@ -55,18 +56,25 @@
       ]
     },
     {
+      "name": "flutter_tts",
+      "version": "4.2.3",
+      "dependencies": [
+        "flutter",
+        "flutter_web_plugins"
+      ]
+    },
+    {
       "name": "http",
-      "version": "1.4.0",
+      "version": "0.13.6",
       "dependencies": [
         "async",
         "http_parser",
-        "meta",
-        "web"
+        "meta"
       ]
     },
     {
       "name": "geolocator",
-      "version": "11.1.0",
+      "version": "10.1.1",
       "dependencies": [
         "flutter",
         "geolocator_android",
@@ -285,9 +293,16 @@
       ]
     },
     {
-      "name": "web",
-      "version": "1.1.1",
-      "dependencies": []
+      "name": "flutter_web_plugins",
+      "version": "0.0.0",
+      "dependencies": [
+        "characters",
+        "collection",
+        "flutter",
+        "material_color_utilities",
+        "meta",
+        "vector_math"
+      ]
     },
     {
       "name": "http_parser",
@@ -309,7 +324,7 @@
     },
     {
       "name": "geolocator_web",
-      "version": "3.0.0",
+      "version": "2.2.1",
       "dependencies": [
         "flutter",
         "flutter_web_plugins",
@@ -348,18 +363,6 @@
       "name": "js",
       "version": "0.7.2",
       "dependencies": []
-    },
-    {
-      "name": "flutter_web_plugins",
-      "version": "0.0.0",
-      "dependencies": [
-        "characters",
-        "collection",
-        "flutter",
-        "material_color_utilities",
-        "meta",
-        "vector_math"
-      ]
     },
     {
       "name": "pedantic",
@@ -504,6 +507,11 @@
         "meta",
         "path"
       ]
+    },
+    {
+      "name": "web",
+      "version": "1.1.1",
+      "dependencies": []
     },
     {
       "name": "path_provider_linux",

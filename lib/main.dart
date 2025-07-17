@@ -1,41 +1,44 @@
-// import 'package:flutter/material.dart';
-// import 'pages/landing_page.dart'; // <--- Import the new landing page
-// import 'pages/home_page.dart';
-
-
-// void main() {
-//   runApp(const AusgridAIApp());
-// }
-
-// class AusgridAIApp extends StatelessWidget {
-//   const AusgridAIApp({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return const MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       home: LandingPage(), // <--- Set landing page as the home screen
-//       home: HomePage(),
-
-
-//     );
-//   }
-// }
 import 'package:flutter/material.dart';
-import 'pages/home_page.dart'; 
+import 'pages/home_page.dart'; // ✅ Make sure HomePage is properly imported
 
 void main() {
-  runApp(const AusgridAIApp());
+  runApp(const MyApp());
 }
 
-class AusgridAIApp extends StatelessWidget {
-  const AusgridAIApp({super.key});
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  ThemeMode _themeMode = ThemeMode.light;
+
+  void _toggleTheme() {
+    setState(() {
+      _themeMode =
+          _themeMode == ThemeMode.dark ? ThemeMode.light : ThemeMode.dark;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      title: 'Ausgrid AI',
+      theme: ThemeData.light().copyWith(
+        scaffoldBackgroundColor: Colors.white,
+        textTheme: const TextTheme(bodyMedium: TextStyle(color: Colors.black)),
+      ),
+      darkTheme: ThemeData.dark().copyWith(
+        scaffoldBackgroundColor: const Color(0xFF120038),
+        textTheme: const TextTheme(bodyMedium: TextStyle(color: Colors.white)),
+      ),
+      themeMode: _themeMode,
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+
+      // ✅ This is what was missing:
+     home: const HomePage(),
     );
   }
 }

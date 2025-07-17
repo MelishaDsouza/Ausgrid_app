@@ -1,32 +1,3 @@
-# name: ausgrid_app
-# description: "A new Flutter project."
-# publish_to: 'none' 
-
-# version: 1.0.0+1
-
-# environment:
-#   sdk: ^3.8.1
-
-# dependencies:
-#   flutter:
-#     sdk: flutter
-#   speech_to_text: ^6.3.0
-#   cupertino_icons: ^1.0.8
-#   geolocator: ^11.0.0
-#   http: ^1.2.1
-
-# dev_dependencies:
-#   flutter_test:
-#     sdk: flutter
-#   flutter_lints: ^5.0.0
-
-# flutter:
-#   uses-material-design: true
-
-#   assets:
-#     - assets/logo.png
-#     - assets/background.png
-
 name: ausgrid_application
 description: "A new Flutter project."
 publish_to: 'none' # This keeps it private and off pub.dev
@@ -42,8 +13,10 @@ dependencies:
   cupertino_icons: ^1.0.8
   shared_preferences: ^2.2.2
   speech_to_text: ^6.3.0
-  geolocator: ^11.0.0
-  http: ^1.2.1
+  geolocator: ^10.0.1
+  http: ^0.13.5
+  flutter_tts: ^4.2.3
+  # file_picker: ^6.1.1
 
 dev_dependencies:
   flutter_test:
