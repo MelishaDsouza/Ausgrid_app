@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'login_page.dart';
 import '../widgets/shared_widgets.dart'; // Make sure this file exists and exports backgroundImage & roleButton
-
+import 'admin_login_page.dart';
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -66,9 +66,13 @@ class HomePage extends StatelessWidget {
                       icon: Icons.admin_panel_settings,
                       label: 'Admin',
                       onTap: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(content: Text('Admin button pressed')),
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (_) => const AdminLoginPage()),
                         );
+                        // ScaffoldMessenger.of(context).showSnackBar(
+                        //   const SnackBar(content: Text('Admin button pressed')),
+                        // );
                       },
                     ),
                   ],
