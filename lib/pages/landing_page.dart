@@ -32,6 +32,9 @@ class _LandingPageState extends State<LandingPage> {
   late FlutterTts _flutterTts;
   bool _isListening = false;
   String? _weatherInfo;
+  String? _weatherIconUrl;
+  String? _weatherLocation;
+
 
   @override
   void initState() {
@@ -139,32 +142,36 @@ class _LandingPageState extends State<LandingPage> {
     return await Geolocator.getCurrentPosition();
   }
 
-  Future<String> _getWeather({double? lat, double? lon, String? city}) async {
-  const apiKey = 'cba3680db8e8da96324d022078a073c6'; // replace this
-  final url = city != null
-      ? Uri.parse('https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey&units=metric')
-      : Uri.parse('https://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$lon&appid=$apiKey&units=metric');
+  Future<Map<String, String>> _getWeather({String? city, double? lat, double? lon}) async {
+  final apiKey = 'cba3680db8e8da96324d022078a073c6';
+  String url;
 
-  print('Requesting: $url'); // 👈 print full URL
+  if (city != null) {
+    url = 'https://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey&units=metric';
+  } else if (lat != null && lon != null) {
+    url = 'https://api.openweathermap.org/data/2.5/weather?lat=$lat&lon=$lon&appid=$apiKey&units=metric';
+  } else {
+    throw Exception('City or coordinates must be provided');
+  }
 
-  final response = await http.get(url);
-  print('Status Code: ${response.statusCode}');
-  print('Body: ${response.body}');
+  final response = await http.get(Uri.parse(url));
+  final data = jsonDecode(response.body);
 
   if (response.statusCode == 200) {
-    final data = json.decode(response.body);
-    final temp = data['main']['temp'];
-    final condition = data['weather'][0]['description'];
-    final locationName = data['name'];
-    return '$locationName: ${temp.round()}°C, ${condition[0].toUpperCase()}${condition.substring(1)}';
+    return {
+      'text': '${data['weather'][0]['description']}, ${data['main']['temp'].toStringAsFixed(1)}°C',
+      'icon': 'http://openweathermap.org/img/wn/${data['weather'][0]['icon']}@2x.png',
+      'location': data['name'],
+    };
   } else {
-    final error = json.decode(response.body);
-    throw 'Weather error: ${error['message']}';
+    throw Exception(data['message'] ?? 'Failed to fetch weather');
   }
 }
+
   void _showWeather() async {
   final controller = TextEditingController();
   String dialogText = 'Fetching weather...';
+
 
   showDialog(
     context: context,
@@ -210,11 +217,16 @@ class _LandingPageState extends State<LandingPage> {
                 final city = controller.text.trim();
                 if (city.isNotEmpty) {
                   try {
-                    final cityWeather = await _getWeather(city: city);
-                    setState(() => _weatherInfo = cityWeather);
-                    setStateDialog(() => dialogText = cityWeather);
+                    // Fetch weather by city name instead of using undefined 'pos'
+                    final weatherData = await _getWeather(city: city);
+                    setState(() {
+                      _weatherInfo = weatherData['text'];
+                      _weatherIconUrl = weatherData['icon'];
+                      _weatherLocation = weatherData['location'];
+                    });
+                    setStateDialog(() => dialogText = weatherData['text'] ?? '');
                   } catch (e) {
-                    setStateDialog(() => dialogText = e.toString());
+                    setStateDialog(() => dialogText = 'Error: ${e.toString()}');
                   }
                 }
               },
@@ -225,22 +237,25 @@ class _LandingPageState extends State<LandingPage> {
       );
     },
   );
-
-  // Fetch and show current location-based weather
   try {
     final pos = await _determinePosition();
-    final info = await _getWeather(lat: pos.latitude, lon: pos.longitude);
-    setState(() => _weatherInfo = info);
+    final weatherData = await _getWeather(lat: pos.latitude, lon: pos.longitude);
+    setState(() {
+      _weatherInfo = weatherData['text'];
+      _weatherIconUrl = weatherData['icon'];
+      _weatherLocation = weatherData['location'];
+    });
 
     if (context.mounted) {
-      dialogText = info;
+      dialogText = weatherData['text'] ?? 'No weather data';
     }
   } catch (e) {
     if (context.mounted) {
       dialogText = 'Failed to fetch location weather: ${e.toString()}';
     }
   }
-}
+
+}  
 
 void _showLogoutDialog(BuildContext context) {
   showDialog(
@@ -298,9 +313,6 @@ void _showLogoutDialog(BuildContext context) {
     },
   );
 }
-
-
-
 
   Widget _buildChatBubble(String message, bool isUser) {
     return Align(
@@ -380,13 +392,42 @@ void _showLogoutDialog(BuildContext context) {
             ),
           ),
           if (_weatherInfo != null)
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Text(
-                _weatherInfo!,
-                style: const TextStyle(color: Colors.white),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Row(
+                mainAxisSize: MainAxisSize.min, // Shrink-wrap horizontally
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  if (_weatherIconUrl != null)
+                    Image.network(
+                      _weatherIconUrl!,
+                      width: 40,
+                      height: 40,
+                    ),
+                  const SizedBox(width: 8),
+                  Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        if (_weatherLocation != null)
+                          Text(
+                            _weatherLocation!,
+                            style: const TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                            ),
+                          ),
+                          Text(
+                            _weatherInfo!,
+                            style: const TextStyle(color: Colors.white),
+                          ),
+                      ],
+                    ),
+              
+                ],
               ),
-            ),
+          ),
+
           const SizedBox(height: 12),
           const Text(
             'By messaging Ausgrid AI, you agree to our Terms and have read our Privacy Policy. See Cookie Preferences.',
@@ -395,8 +436,9 @@ void _showLogoutDialog(BuildContext context) {
           ),
           const SizedBox(height: 16),
         ],
-      ),
+      )
     );
+      
   }
 
   Widget _buildHeader(BuildContext context) {

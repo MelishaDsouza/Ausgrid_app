@@ -1,10 +1,9 @@
-// 
 import 'package:flutter/material.dart';
 import '../../widgets/shared_widgets.dart';
 import 'landing_page.dart'; // ✅ Import LandingPage
 
 class MicrophonePermissionScreen extends StatelessWidget {
-  const MicrophonePermissionScreen({super.key});
+  const MicrophonePermissionScreen({super.key, required String username});
 
   @override
   Widget build(BuildContext context) {

@@ -13,6 +13,38 @@ class _LoginScreenState extends State<LoginScreen> {
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
   bool _obscurePassword = true;
+  bool _loginFailed = false;
+
+  final Map<String, String> validUsers = {
+    'aawan': '1234',
+    'melisha': '2468',
+    'payal': '1357',
+    'nupur': '1234',
+    'swapnil': '1234',
+    'muharika': '12345',
+  };
+
+  void _handleLogin() {
+    String username = usernameController.text.trim();
+    String password = passwordController.text;
+
+    if (validUsers.containsKey(username) && validUsers[username] == password) {
+      setState(() {
+        _loginFailed = false;
+      });
+      // ✅ Correctly pass username to next screen
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => LocationPermissionScreen(username: username),
+        ),
+      );
+    } else {
+      setState(() {
+        _loginFailed = true;
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -71,16 +103,19 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
+                    if (_loginFailed)
+                      const Padding(
+                        padding: EdgeInsets.only(top: 10),
+                        child: Text(
+                          'Invalid username or password',
+                          style: TextStyle(color: Colors.red),
+                        ),
+                      ),
                     const SizedBox(height: 30),
                     SizedBox(
                       width: 160,
                       child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => const LocationPermissionScreen()),
-                          );
-                        },
+                        onPressed: _handleLogin,
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.indigo[900],
                           padding: const EdgeInsets.symmetric(vertical: 15),

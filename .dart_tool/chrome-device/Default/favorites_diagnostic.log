@@ -1,0 +1,30 @@
+2025-07-23 06:20:16.776: [INFO] OnDoneLoading sync enabled: 0
+2025-07-23 06:20:16.917: [INFO] RecordSyncInitDuration has_sync_been_enabled: 0 state: 0
+2025-07-23 06:20:17.587: [INFO] VisibilityChanged: 0
+2025-07-23 06:20:17.732: [INFO] RecordSyncInitDuration has_sync_been_enabled: 0 state: 0
+2025-07-23 06:20:17.733: [INFO] RecordSyncInitDuration has_sync_been_enabled: 0 state: 0
+2025-07-23 06:20:17.736: [INFO] RecordSyncInitDuration has_sync_been_enabled: 0 state: 0
+2025-07-23 06:20:17.738: [INFO] RecordSyncInitDuration has_sync_been_enabled: 0 state: 0
+2025-07-23 06:20:17.740: [INFO] RecordSyncInitDuration has_sync_been_enabled: 0 state: 0
+2025-07-23 06:20:17.743: [INFO] RecordSyncInitDuration has_sync_been_enabled: 0 state: 0
+2025-07-23 06:20:17.745: [INFO] RecordSyncInitDuration has_sync_been_enabled: 0 state: 0
+2025-07-23 06:20:17.750: [INFO] RecordSyncInitDuration has_sync_been_enabled: 0 state: 0
+2025-07-23 06:20:17.752: [INFO] RecordSyncInitDuration has_sync_been_enabled: 0 state: 0
+2025-07-23 06:20:17.755: [INFO] RecordSyncInitDuration has_sync_been_enabled: 0 state: 0
+2025-07-23 06:20:17.757: [INFO] RecordSyncInitDuration has_sync_been_enabled: 0 state: 0
+2025-07-23 06:20:26.687: [INFO] RecordSyncInitDuration has_sync_been_enabled: 0 state: 3
+2025-07-23 06:20:26.703: [INFO] Primary account changed.
+2025-07-23 06:20:26.703: [INFO] OnPrimaryAccountChanged PrimaryAccountChangeEvent::Type::kSet
+2025-07-23 06:20:26.720: [INFO] RecordSyncInitDuration has_sync_been_enabled: 0 state: 3
+2025-07-23 06:20:27.308: [INFO] RecordSyncInitDuration has_sync_been_enabled: 0 state: 3
+2025-07-23 06:20:32.944: [INFO] BookmarkNodeAdded, ABU: 0
+2025-07-23 06:20:33.636: [INFO] Sync initialization duration: 6140ms
+2025-07-23 08:10:05.966: [INFO] OnDoneLoading sync enabled: 1
+2025-07-23 08:10:06.584: [INFO] VisibilityChanged: 0
+2025-07-23 08:10:13.278: [INFO] Sync initialization duration: 4089ms
+2025-07-23 09:27:22.747: [INFO] OnDoneLoading sync enabled: 1
+2025-07-23 09:27:23.341: [INFO] VisibilityChanged: 0
+2025-07-23 09:27:29.746: [INFO] Sync initialization duration: 5576ms
+2025-07-23 10:09:02.420: [INFO] OnDoneLoading sync enabled: 1
+2025-07-23 10:09:03.213: [INFO] VisibilityChanged: 0
+2025-07-23 10:09:07.802: [INFO] Sync initialization duration: 3825ms

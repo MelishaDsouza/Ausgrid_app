@@ -1,0 +1,51 @@
+{
+   "checksum": "fd564c8628d72be9b0a64ab38e8418ac",
+   "roots": {
+      "bookmark_bar": {
+         "children": [ {
+            "date_added": "13394802962943318",
+            "date_last_used": "0",
+            "guid": "18b1927e-57e9-44fd-a540-722894897fdf",
+            "id": "6",
+            "name": "Percipio Course CloudOps Automation: Continuous Automation Implementation",
+            "show_icon": false,
+            "source": "sync",
+            "type": "url",
+            "url": "https://kyndryl.percipio.com/courses/27a92433-05c4-437f-a0ad-1eff44e0e941/videos/c653f390-148b-41fd-bfe1-32b29cd78b16?sharelink=80j0NWcc1z0",
+            "visit_count": 1
+         } ],
+         "date_added": "13397725216595432",
+         "date_last_used": "0",
+         "date_modified": "13394802962943318",
+         "guid": "0bc5d13f-2cba-5d74-951f-3f233fe6c908",
+         "id": "1",
+         "name": "Favorites bar",
+         "source": "unknown",
+         "type": "folder"
+      },
+      "other": {
+         "children": [  ],
+         "date_added": "13397725216595432",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "82b081ec-3dd3-529c-8475-ab6c344590dd",
+         "id": "2",
+         "name": "Other favorites",
+         "source": "unknown",
+         "type": "folder"
+      },
+      "synced": {
+         "children": [  ],
+         "date_added": "13397725216595432",
+         "date_last_used": "0",
+         "date_modified": "0",
+         "guid": "4cf2e351-0e85-532b-bb37-df045d8f8d0f",
+         "id": "3",
+         "name": "Mobile favorites",
+         "source": "unknown",
+         "type": "folder"
+      }
+   },
+   "sync_metadata": "CosBCg4IiIECEgiqp8KHlwEAABIAGlhkWmx6VFV1dmRuY0huZ1NYYXJtelppY0hIS3RpVm1FelBOZCt4ZE9rMENUMFppc3A3dDJwNTlWRS8zNGxmaURzaVRaWWgyWlEzaHE3OFR5TWFaME5zdz09KhhmQ1F2UGVMSHVGaHo0cCtoTDRXU1JnPT1IA6AGCRKOAQgBEokBChx5eEovNmZ2a2VjcjdrcDVFUXpCNHRXTHBkYkU9EiQ2YjIzZGM2YS03MDUwLTVjNWItOTdiNS05OTJhNmM5NWMyYTcYACAAKAAw+pbBpvQyOM+hwab0MkDPocGm9DJKHGFSQ1dMZ2hGOWI1SW5xS0lEdnVKL2p2UWtGYz1aAGUAAAAAwj4CYAASrAEIBhKnAQocbUZnSHJUTU5ORVdJM3FiRkpyL1RXQlhBbGVVPRIkMThiMTkyN2UtNTdlOS00NGZkLWE1NDAtNzIyODk0ODk3ZmRmGAAgACgAMKnPir74MjjJ1Yq++DJAydWKvvgyShxaaVovOFpwZW82dm9FUnZFZUgrRlc0aEo3L0k9Wh4iHDdscmtnQklrU1ZPZ2YySDY4SGdRZ0dQSjZsTT1lrHwmpsI+AmAFEo4BCAISiQEKHFljU1RvbnZFU1B3cUNzNEwyY3JWaHY2OEw5OD0SJGU0ZjUxMWQyLTc5YzgtNWYyMy05NTMzLTBmOTcwNTllNzYzMBgAIAAoADD7lsGm9DI4gaLBpvQyQIGiwab0Mkocb1BWa2h3QlJiVjY1S0NXUjIrSU9OSFdvT3U4PVoAZQAAAADCPgJgABKOAQgDEokBChxuamdEdTg4ZUNydlhwODZwRDdmSEdjcUZwODg9EiQ3ZWZjYzkwMi0wYTlhLTUzYjEtYmM1Yy1lNDViZDM0YTRhNmEYACAAKAAwgJfBpvQyOOiiwab0MkDoosGm9DJKHHl6TkIwMWNuNTRBN2NSVTB1VCsvUGdtVHRVbz1aAGUAAAAAwj4CYAAwADgA",
+   "version": 1
+}
